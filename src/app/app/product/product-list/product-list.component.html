@@ -1,0 +1,28 @@
+<table class="table table-bordered" *ngIf="products | async as productsData">
+    <thead>
+        <tr>
+            <th scope="col">S.no</th>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productsData">
+            <th>{{product.id}}</th>
+            <th>{{product.description}}</th>
+            <th>{{product.price}}</th>
+            <th>{{product.quantity}}</th>
+            <th>{{product.quantity * product.price}}</th>
+            <th>
+                <div class="container">
+                    <a class="btn btn-primary" (click)="OnDeleteClick(product)">
+                        Delete
+                    </a>
+                </div>
+            </th>
+        </tr>
+    </tbody>
+</table>

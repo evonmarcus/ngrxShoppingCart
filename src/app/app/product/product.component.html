@@ -1,0 +1,40 @@
+<div class="container">
+  <form class="form-horizontal" [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+    <div class="form-group">
+      <label>Product Description</label>
+      <input class="form-control" type="text" placeholder="Description" formControlName="description">
+      <div class="col-sm-3">
+        <span style="color: red;"
+          *ngIf="productForm.controls['description'].touched && productForm.controls['description'].errors?.required">This is a mandatory
+          field.</span>
+      </div>
+      <div class="col-md 4">
+        <span style="color: red;"
+        *ngIf="productForm.controls['description'].touched && productForm.controls['description'].errors?.isValid != null && !productForm.controls['description'].errors?.isValid">The value should contain
+          only letters in upper or lower case.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input class="form-control" type="number" placeholder="Price" formControlName="price">
+      <span style="color: red;"
+          *ngIf="productForm.controls['price'].touched && productForm.controls['price'].errors?.required">This is a mandatory
+          field.</span>
+    </div>
+    <div class="form-group">
+      <label>Quantity</label>
+      <input class="form-control" type="number" placeholder="Quantity" formControlName="quantity">
+      <span style="color: red;"
+          *ngIf="productForm.controls['quantity'].touched && productForm.controls['quantity'].errors?.required">This is a mandatory
+          field.</span>
+    </div>
+    <br>
+    <div class="container">
+      <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Add</button>
+    </div>
+  </form>
+</div>
+<br>
+<div class="container">
+  <app-product-list></app-product-list>
+</div>
